@@ -11,6 +11,16 @@ app.secret_key = 'your-secret-key'
 DOWNLOAD_FOLDER = os.path.join('static', 'downloads')
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
+ydl_opts = {
+    'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(webpage_url_basename)s.%(ext)s'),
+    'format': 'bestvideo+bestaudio/best',
+    'merge_output_format': 'mp4',
+    'quiet': False,
+    'noplaylist': True,
+    'cookiefile': 'instagram_cookies.txt',  # <-- Add this line
+}
+
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     download_link = None
