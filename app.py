@@ -17,7 +17,7 @@ url = st.text_input("Enter YouTube Video URL")
 
 if url:
     try:
-        yt = YouTube(url)
+        yt = YouTube(url, use_po_token=True, client='WEB')
         st.video(url)
 
         st.write(f"**Title:** {yt.title}")
