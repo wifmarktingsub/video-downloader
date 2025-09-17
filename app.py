@@ -10,9 +10,10 @@ app.secret_key = 'your-secret-key'
 # Output folder
 DOWNLOAD_FOLDER = os.path.join('static', 'downloads')
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
-
+    
 # Updated path
-cookie_path = os.path.join('static', 'instagram_cookies.txt')
+cookie_path = os.path.abspath(os.path.join('static', 'instagram_cookies.txt'))
+print(f"Using cookie file at: {cookie_path}")
 
 # DEBUG: Check if file exists
 if not os.path.exists(cookie_path):
@@ -20,15 +21,15 @@ if not os.path.exists(cookie_path):
 else:
     print("✅ Cookie file found:", cookie_path)
 
-print(f"📄 Using cookie file at: {cookie_path}")
 
 ydl_opts = {
     'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(webpage_url_basename)s.%(ext)s'),
     'format': 'bestvideo+bestaudio/best',
     'merge_output_format': 'mp4',
     'quiet': False,
+    'verbose': True,  # Add this
     'noplaylist': True,
-    'cookiefile': cookie_path,  # ✅ absolute path
+    'cookiefile': cookie_path,
 }
 
 
