@@ -1,4 +1,8 @@
+
 __pycache__/
 downloads/
 *.pyc
 *.pyo
+
+static/instagram_cookies.txt
+
