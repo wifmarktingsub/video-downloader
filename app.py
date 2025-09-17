@@ -11,13 +11,16 @@ app.secret_key = 'your-secret-key'
 DOWNLOAD_FOLDER = os.path.join('static', 'downloads')
 os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 
+# Updated path
+cookie_path = os.path.join('static', 'instagram_cookies.txt')
+
 ydl_opts = {
     'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(webpage_url_basename)s.%(ext)s'),
     'format': 'bestvideo+bestaudio/best',
     'merge_output_format': 'mp4',
     'quiet': False,
     'noplaylist': True,
-    'cookiefile': 'instagram_cookies.txt',  # <-- Add this line
+    'cookiefile': cookie_path,  # ✅ use the new path
 }
 
 
