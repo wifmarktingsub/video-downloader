@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Status</title>
+</head>
+<body>
+    <h1>Download Status</h1>
+
+    {% if downloads_in_progress[download_id] == 'in_progress' %}
+        <p>Your download is in progress... Please wait.</p>
+    {% elif downloads_in_progress[download_id] == 'completed' %}
+        <p>Download completed! <a href="/download/{{ download_id }}">Click here to download the video</a></p>
+    {% else %}
+        <p>Download failed. Please try again later.</p>
+    {% endif %}
+</body>
+</html>
