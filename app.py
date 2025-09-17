@@ -14,13 +14,21 @@ os.makedirs(DOWNLOAD_FOLDER, exist_ok=True)
 # Updated path
 cookie_path = os.path.join('static', 'instagram_cookies.txt')
 
+# DEBUG: Check if file exists
+if not os.path.exists(cookie_path):
+    print("❌ Cookie file not found at:", cookie_path)
+else:
+    print("✅ Cookie file found:", cookie_path)
+
+print(f"📄 Using cookie file at: {cookie_path}")
+
 ydl_opts = {
     'outtmpl': os.path.join(DOWNLOAD_FOLDER, '%(webpage_url_basename)s.%(ext)s'),
     'format': 'bestvideo+bestaudio/best',
     'merge_output_format': 'mp4',
     'quiet': False,
     'noplaylist': True,
-    'cookiefile': cookie_path,  # ✅ use the new path
+    'cookiefile': cookie_path,  # ✅ absolute path
 }
 
 
